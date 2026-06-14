@@ -23,6 +23,9 @@ import Cards from './pages/Cards';
 import Transactions from './pages/Transactions';
 import Profile from './pages/Profile';
 import Settings from './pages/Settings';
+import QRScan from './pages/QRScan';
+import BusinessRegister from './pages/business/BusinessRegister';
+import BusinessProfile from './pages/business/BusinessProfile';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -59,6 +62,9 @@ export default function App() {
                   <Route path="/transactions" element={<Transactions />} />
                   <Route path="/profile" element={<Profile />} />
                   <Route path="/settings" element={<Settings />} />
+                  <Route path="/qr-scan" element={<QRScan />} />
+                  <Route path="/business/register" element={<BusinessRegister />} />
+                  <Route path="/business/profile" element={<BusinessProfile />} />
                 </Route>
 
                 {/* Catch-all */}

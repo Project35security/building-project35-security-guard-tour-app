@@ -3,7 +3,7 @@ import {
   LayoutDashboard, Wallet, ArrowUpDown, Plane,
   Smartphone, Shield, RefreshCw, CreditCard,
   History, User, Settings, LogOut, Bell,
-  ChevronRight, Zap,
+  ChevronRight, Zap, QrCode, Store,
 } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import { useWallet } from '@/contexts/WalletContext';
@@ -15,12 +15,14 @@ const NAV_ITEMS = [
   { to: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
   { to: '/wallet', icon: Wallet, label: 'My Wallets' },
   { to: '/transfer', icon: ArrowUpDown, label: 'Transfer' },
+  { to: '/qr-scan', icon: QrCode, label: 'QR Pay' },
   { to: '/travel', icon: Plane, label: 'Travel' },
   { to: '/airtime', icon: Smartphone, label: 'Airtime & Data' },
   { to: '/insurance', icon: Shield, label: 'Insurance' },
   { to: '/subscriptions', icon: RefreshCw, label: 'Subscriptions' },
   { to: '/cards', icon: CreditCard, label: 'Cards' },
   { to: '/transactions', icon: History, label: 'Transactions' },
+  { to: '/business/profile', icon: Store, label: 'Business' },
 ];
 
 const BOTTOM_NAV = [

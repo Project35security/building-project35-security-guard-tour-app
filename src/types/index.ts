@@ -218,3 +218,107 @@ export interface SavingsGoal {
 }
 
 export type AuthStep = 'login' | '2fa' | 'biometric' | 'pin';
+
+/* ─── Business / Merchant types ─── */
+
+export type BusinessType =
+  | 'sole_proprietor' | 'partnership' | 'llc' | 'corporation' | 'ngo' | 'freelancer';
+
+export type BusinessDocType =
+  | 'certificate_of_incorporation' | 'tax_id' | 'business_license'
+  | 'utility_bill' | 'bank_statement' | 'directors_id' | 'memorandum';
+
+export type VerificationStatus = 'draft' | 'pending' | 'in_review' | 'approved' | 'rejected';
+
+export interface BusinessDocument {
+  id: string;
+  type: BusinessDocType;
+  label: string;
+  status: 'pending' | 'approved' | 'rejected';
+  uploadedAt: string;
+  fileName?: string;
+}
+
+export interface LinkedBankAccount {
+  id: string;
+  bankName: string;
+  accountName: string;
+  accountNumber: string;
+  routingNumber?: string;
+  swiftCode?: string;
+  iban?: string;
+  currency: Currency;
+  country: string;
+  isPrimary: boolean;
+  verified: boolean;
+  addedAt: string;
+}
+
+export interface LinkedMobileMoney {
+  id: string;
+  provider: string;
+  providerLogo: string;
+  providerColor: string;
+  phoneNumber: string;
+  accountName: string;
+  currency: Currency;
+  country: string;
+  isPrimary: boolean;
+  verified: boolean;
+  addedAt: string;
+}
+
+export interface BusinessAccount {
+  id: string;
+  userId: string;
+  businessName: string;
+  businessType: BusinessType;
+  registrationNumber: string;
+  taxId: string;
+  industry: string;
+  website?: string;
+  email: string;
+  phone: string;
+  address: string;
+  city: string;
+  country: string;
+  description: string;
+  logo?: string;
+  verificationStatus: VerificationStatus;
+  kycStatus: KYCStatus;
+  linkedBankAccounts: LinkedBankAccount[];
+  linkedMobileMoney: LinkedMobileMoney[];
+  documents: BusinessDocument[];
+  acceptedPaymentMethods: ('card' | 'bank_transfer' | 'mobile_money' | 'qr' | 'crypto')[];
+  paymentLinkSlug: string;
+  settlementCurrency: Currency;
+  settlementFrequency: 'instant' | 'daily' | 'weekly';
+  totalRevenue: number;
+  pendingSettlement: number;
+  createdAt: string;
+}
+
+/* ─── QR Payment types ─── */
+
+export interface QRPaymentData {
+  type: 'payment' | 'request' | 'business';
+  merchant?: string;
+  merchantId?: string;
+  amount?: number;
+  currency?: Currency;
+  reference?: string;
+  walletId?: string;
+  description?: string;
+  category?: string;
+}
+
+export interface MobileMoneyProvider {
+  id: string;
+  name: string;
+  logo: string;
+  color: string;
+  countries: string[];
+  currencies: Currency[];
+  ussdCode?: string;
+  website: string;
+}
