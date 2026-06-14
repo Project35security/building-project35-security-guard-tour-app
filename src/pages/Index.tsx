@@ -1,10 +1,5 @@
+import { Navigate } from 'react-router-dom';
 
-import React from 'react';
-
-const Index = () => {
-  return (
-    <></>
-  );
-};
-
-export default Index;
+export default function Index() {
+  return <Navigate to="/landing" replace />;
+}
